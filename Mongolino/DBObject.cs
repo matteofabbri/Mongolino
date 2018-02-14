@@ -8,7 +8,7 @@ using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 using MongoDB.Driver;
 
-namespace Maddalena.Mongo
+namespace Mongolino
 {
     public class DBObject<T> where T : DBObject<T>
     {

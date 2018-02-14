@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Maddalena.Mongo
+namespace Mongolino
 {
     public static class Extensions
     {

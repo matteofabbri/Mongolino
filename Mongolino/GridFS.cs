@@ -2,7 +2,7 @@
 using MongoDB.Driver;
 using MongoDB.Driver.GridFS;
 
-namespace Maddalena.Mongo
+namespace Mongolino
 {
     public class GridFS
     {

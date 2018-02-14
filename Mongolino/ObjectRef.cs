@@ -1,7 +1,7 @@
 ﻿using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 
-namespace Maddalena.Mongo
+namespace Mongolino
 {
     public class ObjectRef<T> where T : DBObject<T>
     {
