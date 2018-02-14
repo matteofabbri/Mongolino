@@ -1,0 +1,9 @@
+D:\Maddalena\Mongolino\Mongolino\obj\Debug\netcoreapp2.0\Mongolino.csprojResolveAssemblyReference.cache
+D:\Maddalena\Mongolino\Mongolino\obj\Debug\netcoreapp2.0\Mongolino.csproj.CoreCompileInputs.cache
+D:\Maddalena\Mongolino\Mongolino\obj\Debug\netcoreapp2.0\Mongolino.AssemblyInfoInputs.cache
+D:\Maddalena\Mongolino\Mongolino\obj\Debug\netcoreapp2.0\Mongolino.AssemblyInfo.cs
+D:\Maddalena\Mongolino\Mongolino\bin\Debug\netcoreapp2.0\Mongolino.deps.json
+D:\Maddalena\Mongolino\Mongolino\bin\Debug\netcoreapp2.0\Mongolino.dll
+D:\Maddalena\Mongolino\Mongolino\bin\Debug\netcoreapp2.0\Mongolino.pdb
+D:\Maddalena\Mongolino\Mongolino\obj\Debug\netcoreapp2.0\Mongolino.dll
+D:\Maddalena\Mongolino\Mongolino\obj\Debug\netcoreapp2.0\Mongolino.pdb
