@@ -1,3 +1,3 @@
 # Mongolino
 
-Easy approach on Mongo Db interaction, implemnting easy method to queries in a single call.
+Easy library to encapsulate Mongo queries into a single call
