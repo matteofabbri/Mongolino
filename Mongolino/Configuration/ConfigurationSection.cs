@@ -1,6 +1,6 @@
-﻿namespace Mongolino
+﻿namespace Mongolino.Configuration
 {
-    internal class ConfigurationSection
+    public class ConfigurationSection
     {
         public string ConnectionString { get; set; }
 

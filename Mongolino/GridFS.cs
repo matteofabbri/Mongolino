@@ -4,7 +4,7 @@ using MongoDB.Driver.GridFS;
 
 namespace Mongolino
 {
-    public class GridFS
+    public class GridFs
     {
         public static string ConnectionString { get; set; }
 

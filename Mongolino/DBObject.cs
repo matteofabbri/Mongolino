@@ -2,10 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Reflection;
 using System.Threading.Tasks;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 using MongoDB.Driver;
+using Mongolino.Attributes;
+using Mongolino.Configuration;
 
 namespace Mongolino
 {
@@ -13,24 +16,6 @@ namespace Mongolino
     {
         [BsonRepresentation(BsonType.ObjectId)]
         public string Id { get; set; }
-
-        public string FullText
-        {
-            get
-            {
-                var enu = GetType()
-                           .GetProperties()
-                           .Where(x => x.PropertyType == typeof(string) && x.Name != "FullText")
-                           .SelectMany(x => (x.GetValue(this) as string)?.Split(Helper.Removable.Value) ?? new string[0])
-                           .Distinct(StringComparer.InvariantCultureIgnoreCase)
-                           .OrderByDescending(x => x);
-
-                return string.Join(" ", enu);
-            }
-            set
-            {
-            }
-        }
 
         #region STATICS
 
@@ -47,11 +32,35 @@ namespace Mongolino
 
             var client = configuration.ConnectionString != null ? new MongoClient(configuration.ConnectionString) : new MongoClient();
             var collection = client.GetDatabase(configuration.Database).GetCollection<T>(configuration.Collection);
-            collection.Indexes.CreateOne(Builders<T>.IndexKeys.Text(x => x.FullText));
+
+            foreach (var prop in type.GetProperties())
+            {
+                if (prop.GetCustomAttribute(typeof(AscendingIndexAttribute)) != null)
+                {
+                    MongoCollection.Indexes.CreateOne(Builders<T>.IndexKeys.Ascending(new StringFieldDefinition<T>(prop.Name)));
+                }
+
+                if (prop.GetCustomAttribute(typeof(DescendingIndexAttribute)) != null)
+                {
+                    MongoCollection.Indexes.CreateOne(Builders<T>.IndexKeys.Descending(new StringFieldDefinition<T>(prop.Name)));
+                }
+
+                if (prop.GetCustomAttribute(typeof(FullTextIndexAttribute)) != null)
+                {
+                    MongoCollection.Indexes.CreateOne(Builders<T>.IndexKeys.Text(new StringFieldDefinition<T>(prop.Name)));
+                }
+            }
+
+
             return collection;
         });
 
-        static IMongoCollection<T> MongoCollection => _collection.Value;
+        private static IMongoCollection<T> MongoCollection => _collection.Value;
+
+        public static void FullTextindex(Expression<Func<T, object>> func)
+        {
+            MongoCollection.Indexes.CreateOne(Builders<T>.IndexKeys.Text(func));
+        }
 
         public static void AscendingIndex(Expression<Func<T, object>> func)
         {
@@ -246,11 +255,11 @@ namespace Mongolino
             await MongoCollection.DeleteManyAsync(Builders<T>.Filter.In(x => x.Id, obj.Select(x => x.Id)));
         }
 
-        public static T GetOrCreate(Expression<Func<T, bool>> p, T obj)
-        {
-            var f = FirstOrDefault(p);
+        public static T GetOrCreate(Expression<Func<T, bool>> p, T obj) => FirstOrDefault(p) ?? Create(obj);
 
-            return f == default(T) ?  Create(obj) : f;
+        public static async Task<T> GetOrCreateAsync(Expression<Func<T, bool>> p, T obj)
+        {
+            return  (await FirstOrDefaultAsync(p)) ?? await CreateAsync(obj);
         }
 
         public static T FirstOrDefault() => MongoCollection.Find(Builders<T>.Filter.Empty).FirstOrDefault();
