@@ -1,9 +1,8 @@
-﻿using Microsoft.Extensions.Configuration;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
+using Microsoft.Extensions.Configuration;
 
-namespace Maddalena.Mongo
+namespace Mongolino
 {
     public static class Extensions
     {

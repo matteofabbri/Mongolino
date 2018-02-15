@@ -1,7 +1,7 @@
 ﻿using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 
-namespace Maddalena.Mongo
+namespace Mongolino
 {
     public class ObjectRef<T> where T : DBObject<T>
     {
@@ -15,14 +15,8 @@ namespace Maddalena.Mongo
             set => Id = value.Id;
         }
 
-        public static implicit operator ObjectRef<T>(T d)
-        {
-            return new ObjectRef<T>{ Id = d.Id };
-        }
+        public static implicit operator ObjectRef<T>(T d) => new ObjectRef<T>{ Id = d.Id };
 
-        public override string ToString()
-        {
-            return Value?.ToString() ?? Id;
-        }
+        public override string ToString() => Value?.ToString() ?? Id;
     }
 }

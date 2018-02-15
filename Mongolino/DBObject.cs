@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
@@ -8,7 +7,7 @@ using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 using MongoDB.Driver;
 
-namespace Maddalena.Mongo
+namespace Mongolino
 {
     public class DBObject<T> where T : DBObject<T>
     {
