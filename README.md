@@ -1,6 +1,7 @@
 # Mongolino
 
-Easy library to encapsulate Mongo queries into a single call
+Easy library to encapsulate Mongo queries into a single call, handle references and simplifying development.
+We will happily accept pull requests.
 
 ![appveyor status](https://ci.appveyor.com/api/projects/status/github/matteofabbri/Mongolino?branch=master&svg=true)
 
@@ -49,4 +50,4 @@ Easy library to encapsulate Mongo queries into a single call
                 Console.WriteLine($"{item.Title} by {item.Author.Value.UserName}");
             }
 
-```C#
+```
