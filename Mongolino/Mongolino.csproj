@@ -6,12 +6,12 @@
     <ApplicationIcon />
     <StartupObject />
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>1.2.0</Version>
+    <Version>1.2.4</Version>
     <Authors>Matteo Fabbri</Authors>
     <PackageProjectUrl>https://github.com/matteofabbri/Mongolino</PackageProjectUrl>
     <PackageTags>mongo mongodb query orm</PackageTags>
     <Copyright>Matteo Fabbri - 2016</Copyright>
-    <Description>Easy library to encapsulate Mongo queries into a single call</Description>
+    <Description>Easy library to encapsulate Mongo queries into a single call, handle references and simplifying development</Description>
   </PropertyGroup>
 
   <ItemGroup>

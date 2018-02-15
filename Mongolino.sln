@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.27130.2027
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mongolino", "Mongolino\Mongolino.csproj", "{C024E084-A04E-4335-9493-55851D20A2A5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Examples", "Examples\Examples.csproj", "{61A3E736-CB61-4F95-982F-41C3AC660050}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{C024E084-A04E-4335-9493-55851D20A2A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C024E084-A04E-4335-9493-55851D20A2A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C024E084-A04E-4335-9493-55851D20A2A5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{61A3E736-CB61-4F95-982F-41C3AC660050}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{61A3E736-CB61-4F95-982F-41C3AC660050}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{61A3E736-CB61-4F95-982F-41C3AC660050}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{61A3E736-CB61-4F95-982F-41C3AC660050}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

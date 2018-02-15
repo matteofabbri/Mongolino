@@ -3,3 +3,5 @@
 /Mongolino/.vs
 /.vs/Mongolino/v15
 /.vs
+/Examples/obj
+/Examples/bin/Debug/netcoreapp2.0
