@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Mongolino.Attributes
 {
-    public class AscendingIndexAttribute
+    public class AscendingIndexAttribute : Attribute
     {
     }
 }

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Mongolino.Attributes
 {
-    public class FullTextIndexAttribute
+    public class FullTextIndexAttribute : Attribute
     {
     }
 }
