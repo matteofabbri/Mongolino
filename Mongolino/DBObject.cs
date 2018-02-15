@@ -37,17 +37,17 @@ namespace Mongolino
             {
                 if (prop.GetCustomAttribute(typeof(AscendingIndexAttribute)) != null)
                 {
-                    MongoCollection.Indexes.CreateOne(Builders<T>.IndexKeys.Ascending(new StringFieldDefinition<T>(prop.Name)));
+                    collection.Indexes.CreateOne(Builders<T>.IndexKeys.Ascending(new StringFieldDefinition<T>(prop.Name)));
                 }
 
                 if (prop.GetCustomAttribute(typeof(DescendingIndexAttribute)) != null)
                 {
-                    MongoCollection.Indexes.CreateOne(Builders<T>.IndexKeys.Descending(new StringFieldDefinition<T>(prop.Name)));
+                    collection.Indexes.CreateOne(Builders<T>.IndexKeys.Descending(new StringFieldDefinition<T>(prop.Name)));
                 }
 
                 if (prop.GetCustomAttribute(typeof(FullTextIndexAttribute)) != null)
                 {
-                    MongoCollection.Indexes.CreateOne(Builders<T>.IndexKeys.Text(new StringFieldDefinition<T>(prop.Name)));
+                    collection.Indexes.CreateOne(Builders<T>.IndexKeys.Text(new StringFieldDefinition<T>(prop.Name)));
                 }
             }
 
@@ -209,6 +209,13 @@ namespace Mongolino
             await MongoCollection.ReplaceOneAsync(filter, obj);
         }
 
+        public static async Task Update<K>(T obj, Expression<Func<T, K>> sel, K value)
+        {
+            var filter = Builders<T>.Filter.Eq(x => x.Id, obj.Id);
+            var update = Builders<T>.Update.Set(sel, value);
+            MongoCollection.UpdateOne(filter, update);
+        }
+
         public static async Task UpdateAsync<K>(T obj, Expression<Func<T, K>> sel, K value)
         {
             var filter = Builders<T>.Filter.Eq(x => x.Id, obj.Id);
@@ -221,6 +228,13 @@ namespace Mongolino
             var filter = Builders<T>.Filter.Eq(x => x.Id, obj.Id);
             var update = Builders<T>.Update.AddToSet(sel, value);
             await MongoCollection.UpdateOneAsync(filter, update);
+        }
+
+        public static void Increase<K>(T obj, Expression<Func<T, K>> sel, K value)
+        {
+            var filter = Builders<T>.Filter.Eq(x => x.Id, obj.Id);
+            var update = Builders<T>.Update.Inc(sel, value);
+            MongoCollection.UpdateOne(filter, update);
         }
 
         public static async Task IncreaseAsync<K>(T obj, Expression<Func<T, K>> sel, K value)
@@ -269,6 +283,11 @@ namespace Mongolino
         public static async Task<T> FirstOrDefaultAsync(Expression<Func<T, bool>> p) => await (await MongoCollection.FindAsync(p)).FirstOrDefaultAsync();
 
         public static T First(Expression<Func<T, bool>> p) => MongoCollection.Find(p).FirstOrDefault();
+
+        public static IEnumerable<T> Where(Expression<Func<T, bool>> p)
+        {
+            return (MongoCollection.Find(p)).ToEnumerable();
+        }
 
         public static async Task<IEnumerable<T>> WhereAsync(Expression<Func<T, bool>> p)
         {
