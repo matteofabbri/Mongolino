@@ -5,3 +5,4 @@
 /.vs
 /Examples/obj
 /Examples/bin/Debug/netcoreapp2.0
+/Examples/bin/Release/netcoreapp2.0

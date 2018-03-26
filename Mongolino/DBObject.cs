@@ -179,11 +179,11 @@ namespace Mongolino
         }
 
 
-        public static T AddToAsync<K>(T obj, Expression<Func<T, IEnumerable<K>>> sel, K value)
+        public static async Task<T> AddToAsync<K>(T obj, Expression<Func<T, IEnumerable<K>>> sel, K value)
         {
             var filter = Builders<T>.Filter.Eq(x => x.Id, obj.Id);
             var update = Builders<T>.Update.AddToSet(sel, value);
-            MongoCollection.UpdateOneAsync(filter, update);
+            await MongoCollection.UpdateOneAsync(filter, update);
             return obj;
         }
 
