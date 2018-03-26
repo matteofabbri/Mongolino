@@ -145,6 +145,79 @@ namespace Mongolino
             MongoCollection.InsertOneAsync(obj);
         }
 
+        public async Task<IEnumerable<T>> AnyEqualAsync<K>(Expression<Func<T, IEnumerable<K>>> sel, K value)
+        {
+            var filter = Builders<T>.Filter.AnyEq(sel, value);
+            var res = await MongoCollection.FindAsync(filter);
+            return res.ToEnumerable();
+        }
+
+        public async Task<IEnumerable<T>> AnyGreaterAsync<K>(Expression<Func<T, IEnumerable<K>>> sel, K value)
+        {
+            var filter = Builders<T>.Filter.AnyGt(sel, value);
+            var res = await MongoCollection.FindAsync(filter);
+            return res.ToEnumerable();
+        }
+
+        public async Task<IEnumerable<T>> AnyGreaterOrEqualAsync<K>(Expression<Func<T, IEnumerable<K>>> sel, K value)
+        {
+            var filter = Builders<T>.Filter.AnyGte(sel, value);
+            var res = await MongoCollection.FindAsync(filter);
+            return res.ToEnumerable();
+        }
+
+
+        public async Task<IEnumerable<T>> AnyLowerAsync<K>(Expression<Func<T, IEnumerable<K>>> sel, K value)
+        {
+            var filter = Builders<T>.Filter.AnyLt(sel, value);
+            var res = await MongoCollection.FindAsync(filter);
+            return res.ToEnumerable();
+        }
+
+        public async Task<IEnumerable<T>> AnyLowerOrEqualAsync<K>(Expression<Func<T, IEnumerable<K>>> sel, K value)
+        {
+            var filter = Builders<T>.Filter.AnyLte(sel, value);
+            var res = await MongoCollection.FindAsync(filter);
+            return res.ToEnumerable();
+        }
+
+        public IEnumerable<T> AnyEqual<K>(Expression<Func<T, IEnumerable<K>>> sel, K value)
+        {
+            var filter = Builders<T>.Filter.AnyEq(sel, value);
+            var res = MongoCollection.Find(filter);
+            return res.ToEnumerable();
+        }
+
+        public IEnumerable<T> AnyGreater<K>(Expression<Func<T, IEnumerable<K>>> sel, K value)
+        {
+            var filter = Builders<T>.Filter.AnyGt(sel, value);
+            var res = MongoCollection.Find(filter);
+            return res.ToEnumerable();
+        }
+
+        public IEnumerable<T> AnyGreaterOrEqual<K>(Expression<Func<T, IEnumerable<K>>> sel, K value)
+        {
+            var filter = Builders<T>.Filter.AnyGte(sel, value);
+            var res = MongoCollection.Find(filter);
+            return res.ToEnumerable();
+        }
+
+
+        public IEnumerable<T> AnyLower<K>(Expression<Func<T, IEnumerable<K>>> sel, K value)
+        {
+            var filter = Builders<T>.Filter.AnyLt(sel, value);
+            var res = MongoCollection.Find(filter);
+            return res.ToEnumerable();
+        }
+
+        public IEnumerable<T> AnyLowerOrEqual<K>(Expression<Func<T, IEnumerable<K>>> sel, K value)
+        {
+            var filter = Builders<T>.Filter.AnyLte(sel, value);
+            var res = MongoCollection.Find(filter);
+            return res.ToEnumerable();
+        }
+
+
         public T Create(T obj)
         {
             MongoCollection.InsertOne(obj);

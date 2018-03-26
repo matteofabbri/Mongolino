@@ -6,7 +6,7 @@
     <ApplicationIcon />
     <StartupObject />
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>1.3.4</Version>
+    <Version>1.4.5</Version>
     <Authors>Matteo Fabbri</Authors>
     <PackageProjectUrl>https://github.com/matteofabbri/Mongolino</PackageProjectUrl>
     <PackageTags>mongo mongodb nosql framework orm orm-library orm-extension mongodb-database dotnet-core dotnetcore dotnet dotnetframework gridfs distributed-storage</PackageTags>
