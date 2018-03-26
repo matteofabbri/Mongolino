@@ -9,7 +9,7 @@
     <Version>1.2.4</Version>
     <Authors>Matteo Fabbri</Authors>
     <PackageProjectUrl>https://github.com/matteofabbri/Mongolino</PackageProjectUrl>
-    <PackageTags>mongo mongodb query orm</PackageTags>
+    <PackageTags>mongo mongodb nosql framework orm orm-library orm-extension mongodb-database dotnet-core dotnetcore dotnet dotnetframework gridfs distributed-storage</PackageTags>
     <Copyright>Matteo Fabbri - 2016</Copyright>
     <Description>Easy library to encapsulate Mongo queries into a single call, handle references and simplifying development</Description>
   </PropertyGroup>
